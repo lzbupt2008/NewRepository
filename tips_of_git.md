@@ -28,6 +28,14 @@
 
 若已经关闭了bash，用`git reflog`显示之前的序号，并用`git reset --hard XXXX`必须用全部序号，不能简略。
 
+#### 工作区，暂存区，分支，远程仓库
+
+工作区（working directory）:arrow_forward:通过`git add *`推送至暂存区(stage):arrow_forward:通过`git commit -m 'message'`推送至分支:arrow_forward:通过`git push origin master`推送至远端仓库
+
+`git diff`用于看工作区和暂存区的区别 `git diff --cached`用于看暂存区和分支的区别
+
+
+
 ## 错误
 
 1. `fatal: remote origin already exists.` 方法：`$ git remote rm origin`之后 `$ git remote add git@github.com:lzbupt2008/NewRepository.git`
