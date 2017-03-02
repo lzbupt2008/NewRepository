@@ -40,8 +40,49 @@
 
 ## 错误
 
-1. `fatal: remote origin already exists.` 方法：`$ git remote rm origin`之后 `$ git remote add git@github.com:lzbupt2008/NewRepository.git`
+1. > `fatal: remote origin already exists.` 
 
-2. ​
+   `$ git remote rm origin`，之后 `$ git remote add git@github.com:lzbupt2008/NewRepository.git`
+
+2. > 'If no other git process is currently running, this probably means a git process crashed in this repository earlier. Make sure no other git process is running and remove the file manually to continue.'
+
+   将`.git`里的`index.lock`文件删除
+
+   ## 语句
+
+   ### 创建
+
+   克隆 `git clone ssh key`
+
+   创建`git init`
+
+   ### 查看，修改与提交
+
+   查看状态`git status`
+
+   查看工作区与暂存区区别`git diff`
+
+   查看暂存区与分支区别`git diff --cached`
+
+   查看HEAD与文件的区别`git diff HEAD -- <filename>`，
+
+   将改动从工作区全部提交给暂存区`git add .`
+
+   将改动从暂存区全部提交给分支`git commit -m 'message'`
+
+   将改动从分支全部提交给远程仓库`git push origin master`
+
+   ### 撤销
+
+   1. 在add之前，撤销工作区的修改`git checkout -- <filename>`，`git status`会告诉你可以add，或`git checkout -- <filename>`
+   2. **head 是指自己工作流程的头端，可以指向工作区，暂存区，分支**，所以有查看HEAD与文件的区别`git diff HEAD -- <filename>`
+   3. 在add之后，commit之前，即在暂存区时，`git status`会告诉你可以commit，或`git reset HEAD '<filename>' `回到工作区（HEAD），\<filename\>可以没有，直接写`git reset HEAD`。此时暂存区清除，`no changes added to commit`,回到1。
+   4. commit之后，`git reset HEAD^`回退版本到上次commit的版本。`git log`看commit序号，`git log --pretty=oneline`，用ctrl+c跳出。`git reset --hard HEAD^`回退一个版本，`HEAD^^`两个版本。但此时只是回退到分支上，如果进行了push，那么远程仓库并没有回退！此时
+
+   > Updates were rejected because the tip of your current branch is behind its remote counterpart.
+
+   此时要先把远端仓库pull下来才能继续push或用`git reset --hard XXXX`xxxx是commit序号
+
+   5. ​
 
    ​
