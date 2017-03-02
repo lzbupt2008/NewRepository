@@ -12,7 +12,7 @@
 
 #### 克隆远端仓库
 
-先用的克隆远端仓库。在github上先创建仓库，然后克隆到本地。
+标准流程。先用的克隆远端仓库。在github上先创建仓库，然后克隆到本地。`git clone git@github.com:lzbupt2008/python_study.git`
 
 #### 本地仓库上传
 
@@ -32,7 +32,9 @@
 
 工作区（working directory）:arrow_forward:通过`git add *`推送至暂存区(stage):arrow_forward:通过`git commit -m 'message'`推送至分支:arrow_forward:通过`git push origin master`推送至远端仓库
 
-`git diff`用于看工作区和暂存区的区别 `git diff --cached`用于看暂存区和分支的区别
+`git diff`用于看工作区和暂存区的区别
+
+ `git diff --cached`用于看暂存区和分支的区别
 
 
 
