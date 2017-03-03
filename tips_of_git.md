@@ -81,8 +81,38 @@
 
    > Updates were rejected because the tip of your current branch is behind its remote counterpart.
 
-   此时要先把远端仓库pull下来才能继续push或用`git reset --hard XXXX`xxxx是commit序号
+   此时要先把远端仓库pull下来才能继续push或用`git reset --hard XXXX`xxxx是commit序号？
 
-   5. ​
+   5. 如果在工作区误删除了文件，可以用`git checkout -- <filename>`恢复文件，其实上述语句就是用版本库/分支（commit）上的文件代替工作区的文件，也可以起到撤销改动的作用。
 
-   ​
+   ### 分支/版本库
+
+   1. 创建新分支`git branch <branch_name>`
+
+   2. 切换分支`git checkout <branch_name>`
+
+   3. 合二为一，创建+切换`git checkout -b <branch_name>`
+
+   4. 在不同分支上做的不同修改，如果已经commit到了分支/版本库，那么切换分支（第2行）会恢复在该分支上的内容，比如在other分支上有test.txt，在another上没有，如果`git checkout another`,test.txt就会消失。
+
+   5. 合并某分支到当前分支：`git merge -m 'message' <name>`
+
+   6. 删除分支：`git branch -d <name>`
+
+   7. 观看示意图`git log --graph --pretty=oneline --abbrev-commit`
+
+   8. 禁用'fast-forward'
+
+      fast-forward：新建了一个other的分支，并在其上进行一系列提交，完成时，回到 master分支，此时，master分支在创建other分支之后并未产生任何新的commit。此时将other合并到master上，这种合并就叫fast forward。合并完之后的视图为扁平状，看不出develop分支开发的任何信息
+
+      在合并的时候使用--no-ff(no fast forward)禁止fast forward 模式
+
+       `git merge  --no-ff -m 'message' branch_name`使用no-ff后，会多生成一个commit 记录，并强制保留other分支的开发记录（而fast-forward的话则是直接合并，看不出之前other的任何记录）。这对于以后代码进行分析特别有用。
+
+   9. 当手头工作没有完成时并不想推送到版本库时，即在暂存区时，先`add`，然后把`git stash`一下，就会保存在stash中，然后去创建分支修复bug，修复后，再`git stash pop`，回到工作现场。
+
+   10. 如果要丢弃一个没有被合并过的分支，可以通过`git branch -D <name>`强行删除
+
+   11. ​
+
+       ​
